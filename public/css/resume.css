@@ -1,0 +1,30 @@
+.text-center {
+    text-align: center;
+}
+
+.font-white {
+    color: #fff;
+}
+@media screen and (min-width: 769px) {
+    .is-hidden-tablet {
+        display: none !important
+    }
+}
+@media screen and (max-width: 768px) {
+    .is-hidden-mobile {
+        display: none!important;
+    }
+
+    .is-6 {
+        flex: auto !important;
+        width: 100% !important;
+    }
+
+    .timeline .detail {
+        display: block !important;
+    }
+
+    .is-hidden-tablet {
+        display: block !important
+    }
+}
