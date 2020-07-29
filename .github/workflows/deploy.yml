@@ -20,12 +20,21 @@ jobs:
       - name: Publish to Github Packages Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: dancastillo/github-actions-tutorial/myapp
+          name: dancastillo/dancastillo.dev/app
           registry: docker.pkg.github.com
           username: ${{ secrets.GH_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
           dockerfile: Dockerfile
           tags: latest
+      - name: Publish to Github Packages Registry
+          uses: elgohr/Publish-Docker-Github-Action@master
+          with:
+            name: dancastillo/dancastillo.dev/nginx
+            registry: docker.pkg.github.com
+            username: ${{ secrets.GH_USERNAME }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+            dockerfile: ./nginx/Dockerfile
+            tags: latest
       - name: Deploy package to digitalocean
         uses: appleboy/ssh-action@master
         env:
@@ -40,5 +49,7 @@ jobs:
           script: |
             docker stop $(docker ps -a -q)
             docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN docker.pkg.github.com
-            docker pull docker.pkg.github.com/dancastillo/github-actions-tutorial/myapp:latest
-            docker run -d -p 80:80 docker.pkg.github.com/dancastillo/github-actions-tutorial/myapp:latest
+            docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/app:latest
+            docker run docker.pkg.github.com/dancastillo/dancastillo.dev/app:latest
+            docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
+            docker run -d -p 80:80 docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
