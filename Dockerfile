@@ -17,7 +17,5 @@ RUN npm install --production
 # Copy all files
 COPY ./ ./
 
-RUN ls
-
 # Build app
 RUN npm run build
