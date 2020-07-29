@@ -31,3 +31,6 @@ yarn-error.log*
 
 # ide settings
 .idea
+
+# docker-compose
+docker-compose.yml
