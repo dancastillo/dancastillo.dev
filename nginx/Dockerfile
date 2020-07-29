@@ -7,8 +7,10 @@ WORKDIR /usr/app
 # Remove any existing config files
 RUN rm /etc/nginx/conf.d/*
 
-# Copy config files
-# *.conf files in conf.d/ dir get included in main config
+# Copy config files *.conf files in conf.d/ dir get included in main config
+# LOCAL build
+#COPY ./default.conf /etc/nginx/conf.d/
+# build
 COPY ./nginx/default.conf /etc/nginx/conf.d/
 
 # Expose the listening port

@@ -20,7 +20,7 @@ jobs:
       - name: Publish to Github Packages Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: dancastillo/dancastillo.dev/app
+          name: dancastillo/dancastillo.dev/nextjs
           registry: docker.pkg.github.com
           username: ${{ secrets.GH_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -48,8 +48,9 @@ jobs:
           envs: GITHUB_USERNAME, GITHUB_TOKEN
           script: |
             docker stop $(docker ps -a -q)
+            docker container rm /nextjs-container
             docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN docker.pkg.github.com
-            docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/app:latest
-            docker run docker.pkg.github.com/dancastillo/dancastillo.dev/app:latest
+            docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/nextjs:latest
             docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
-            docker run -d -p 80:80 docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
+            docker run --network my-network -d --name nextjs-container docker.pkg.github.com/dancastillo/dancastillo.dev/nextjs:latest
+            docker run --network my-network -d --link nextjs-container:nextjs -p 80:80 docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
