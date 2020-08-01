@@ -2,7 +2,7 @@ name: build
 on:
   push:
     branches:
-      - master
+      - working
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,26 +51,4 @@ jobs:
             docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN docker.pkg.github.com
             docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/nextjs:latest
             docker pull docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            docker-compose up -d
-            --build
-=======
-                  - uses: actions/checkout@v1
-=======
->>>>>>> ec5d814... Update deploy.yml
-=======
-            ls
-            pwd
->>>>>>> da9fd81... Update deploy.yml
-      - name: Docker Compose
-        uses: actions/checkout@v2
-      - name: docker compose build
-        run: |
-          docker-compose up -d --build
-<<<<<<< HEAD
->>>>>>> ec31c22... Update deploy.yml
-=======
-          y
->>>>>>> da9fd81... Update deploy.yml
+            docker-compose up -d --build

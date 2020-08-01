@@ -13,11 +13,8 @@ RUN rm /etc/nginx/conf.d/*
 # build
 COPY ./nginx/default.conf /etc/nginx/conf.d/
 
-RUN mkdir /etc/nginx/snippets/
-RUN mkdir /etc/nginx/certs/
-
 # Expose the listening port
-EXPOSE 443
+EXPOSE 80
 
 # Launch NGINX
 CMD [ "nginx", "-g", "daemon off;" ]

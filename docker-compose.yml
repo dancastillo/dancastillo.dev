@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nextjs:
+    image: docker.pkg.github.com/dancastillo/dancastillo.dev/nextjs:latest
+  nginx:
+    image:  docker.pkg.github.com/dancastillo/dancastillo.dev/nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/nginx/certs:/etc/nginx/certs
+      - /etc/nginx/snippets:/etc/nginx/snippets
