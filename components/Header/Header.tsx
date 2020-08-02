@@ -22,7 +22,10 @@ export default function Header({ windowSize }: IWindowSize) {
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '100vh' }}
+                style={{
+                    minHeight: '100vh',
+                    maxWidth: '100%'
+                }}
             >
                 <Grid item container>
                     <Grid item xs
