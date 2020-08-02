@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 services:
   nextjs:
     image: docker.pkg.github.com/dancastillo/dancastillo.dev/nextjs:latest
@@ -10,4 +10,8 @@ services:
     volumes:
       - /etc/nginx/certs:/etc/nginx/certs
       - /etc/nginx/snippets:/etc/nginx/snippets
-      - /etc/nginx/snippets/self-signed.conf:/etc/nginx/snippets/self-signed.conf
+      - /etc/ssl/private:/etc/ssl/private
+      - /etc/nginx/dhparam.pem:/etc/nginx/dhparam.pem
+      - /etc/nginx/certs
+      - /etc/nginx/snippets
+      - /etc/ssl/private
