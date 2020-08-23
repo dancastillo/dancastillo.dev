@@ -1,4 +1,4 @@
-### Hello there
+## Hello there
 
 My name is Dan. This is the code repository for my resume. 
 
@@ -8,7 +8,7 @@ This project was built using next.js with typescript. Also uses docker, github a
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## To run this project locally:
+### To run this project locally:
 
 First, run the development server:
 
